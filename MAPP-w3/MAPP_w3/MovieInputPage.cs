@@ -13,7 +13,6 @@ namespace MAPP_w3
 {
     public class MovieInputPage : ContentPage
     {
-
         private Movies _movies;
         private MovieResourceProvider _movieResourceProvider;
         
