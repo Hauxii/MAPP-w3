@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
-
+using System.Threading.Tasks;
+using MAPP_w3.Model;
 using Xamarin.Forms;
 
 namespace MAPP_w3
 {
     public class MovieInputPage : ContentPage
     {
+
+        private Movies _movies;
+        private MovieResourceProvider _movieResourceProvider;
+        
         private Label _entryLabel = new Label
         {
             HorizontalOptions = LayoutOptions.Start,
@@ -39,6 +44,8 @@ namespace MAPP_w3
 
         public MovieInputPage()
         {
+            this._movies = new Movies();
+            this._movieResourceProvider = new MovieResourceProvider();
             this.BackgroundColor = Color.White; 
             this.Title = "Search";
             Content = new StackLayout
@@ -63,9 +70,10 @@ namespace MAPP_w3
             this._searchEntry.Completed += this.OnDisplayMovieButtonClicked;
         }
 
-        private void OnDisplayMovieButtonClicked(object sender, EventArgs e)
+        private async void OnDisplayMovieButtonClicked(object sender, EventArgs e)
         {
-            this._displayMovieLabel.Text = "This is supposed to do something";
+            await this._movieResourceProvider.GetMoviesByTitle(this._movies, this._entryLabel.Text);
+            this._displayMovieLabel.Text = this._movies.MovieList[0].Title;
             this._searchEntry.Text = string.Empty;
         }
     }
