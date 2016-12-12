@@ -12,10 +12,7 @@ namespace MAPP_w3
         public App()
         {
             // The root page of your application
-            var content = new ContentPage
-            {
-                Title = "MAPP_w3",
-                Content = new MovieInputPage();
+            var content = new MovieInputPage();
 
             MainPage = new NavigationPage(content);
         }
