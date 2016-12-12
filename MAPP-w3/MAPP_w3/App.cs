@@ -15,17 +15,7 @@ namespace MAPP_w3
             var content = new ContentPage
             {
                 Title = "MAPP_w3",
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
+                Content = new MovieInputPage();
 
             MainPage = new NavigationPage(content);
         }
