@@ -66,18 +66,13 @@ namespace MAPP_w3
                     this._displayMovieLabel
                 }
             };
-            this._displayMovieButton.Clicked += async (sender, e) =>
-            {
-                await this._movieResourceProvider.GetMoviesByTitle(this._movies, this._entryLabel.Text);
-                this._displayMovieLabel.Text = this._movies.MovieList[0].Title;
-                this._searchEntry.Text = string.Empty;
-            }; //this.OnDisplayMovieButtonClicked;
+            this._displayMovieButton.Clicked += this.OnDisplayMovieButtonClicked;
             this._searchEntry.Completed += this.OnDisplayMovieButtonClicked;
         }
 
         private async void OnDisplayMovieButtonClicked(object sender, EventArgs e)
         {
-            await this._movieResourceProvider.GetMoviesByTitle(this._movies, this._entryLabel.Text);
+            await this._movieResourceProvider.GetMoviesByTitle(this._movies, this._searchEntry.Text);
             this._displayMovieLabel.Text = this._movies.MovieList[0].Title;
             this._searchEntry.Text = string.Empty;
         }
