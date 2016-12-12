@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MAPP_w3.Model;
 using Xamarin.Forms;
+using DM.MovieApi;
+using DM.MovieApi.MovieDb.Movies;
 
 namespace MAPP_w3
 {
@@ -72,8 +74,13 @@ namespace MAPP_w3
 
         private async void OnDisplayMovieButtonClicked(object sender, EventArgs e)
         {
-            await this._movieResourceProvider.GetMoviesByTitle(this._movies, this._searchEntry.Text);
-            this._displayMovieLabel.Text = this._movies.MovieList[0].Title;
+            MovieDbFactory.RegisterSettings(new DBSettings());
+            var _movieApi = MovieDbFactory.Create<IApiMovieRequest>().Value;
+            var movieInfoResponse = await _movieApi.SearchByTitleAsync(this._searchEntry.Text);
+
+            //await this._movieResourceProvider.GetMoviesByTitle(this._movies, this._searchEntry.Text);
+            //this._displayMovieLabel.Text = this._movies.MovieList[0].Title;
+            this._displayMovieLabel.Text = movieInfoResponse.Results[0].Title;
             this._searchEntry.Text = string.Empty;
         }
     }
