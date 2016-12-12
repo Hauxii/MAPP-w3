@@ -13,7 +13,8 @@ namespace MAPP_w3
         private Label _entryLabel = new Label
         {
             HorizontalOptions = LayoutOptions.Start,
-            Text = "Enter words in a movie title"
+            Text = "Enter words in a movie title",
+            FontSize = 19
         };
 
         private Entry _searchEntry = new Entry
@@ -26,6 +27,7 @@ namespace MAPP_w3
         {
             Text = "Search",
             BorderColor = Color.Gray,
+            BorderRadius = 10,
             HorizontalOptions = LayoutOptions.Fill
         };
 
@@ -37,7 +39,7 @@ namespace MAPP_w3
 
         public MovieInputPage()
         {
-            this.BackgroundColor = Color.Silver; //Hrafn used: RGB 240,240,240
+            this.BackgroundColor = Color.White; 
             this.Title = "Search";
             Content = new StackLayout
             {
