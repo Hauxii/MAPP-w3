@@ -2,6 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAPP_w3.MovieDetailsPage"
-             Title="Movie details">
-  <Label Text="{Binding Title}" VerticalOptions="Center" HorizontalOptions="Center" />
+             Title="Movie details" >
+  <Grid x:Name = "DetailsGrid" Padding="5">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height = "*" />
+      <RowDefinition Height = "*" />
+      <RowDefinition Height = "*" />
+    </Grid.RowDefinitions>
+    <Label Grid.Row = "0"
+           Grid.Column = "0"
+           Text = "{Binding Title}"
+           FontSize="Large"
+           Margin = "10" />
+    <Label Grid.Row = "0"
+           Grid.Column = "1"
+           Text = "{Binding Year}"
+           FontSize="Large"
+           Margin="10" />
+  </Grid>
 </ContentPage>
