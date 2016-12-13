@@ -77,17 +77,30 @@ namespace MAPP_w3
 
         private async void OnDisplayMovieButtonClicked(object sender, EventArgs e)
         {
-            _displayMovieButton.IsEnabled = false;
-            _loading.IsVisible = true;
-            _loading.IsRunning = true;
-           
-            await this._movieResourceProvider.GetMoviesByTitle(this._movies, this._searchEntry.Text);
+            if(string.IsNullOrEmpty(_searchEntry.Text))
+            {
+                await DisplayAlert("Invalid input", "Please enter a word from a movie title", "OK");
+            }
+            else
+            {
+                _displayMovieButton.IsEnabled = false;
+                _loading.IsVisible = true;
+                _loading.IsRunning = true;
 
-            await this.Navigation.PushAsync(new MovieListPage() { BindingContext = this._movies });
+                await this._movieResourceProvider.GetMoviesByTitle(this._movies, this._searchEntry.Text);
 
-            this._searchEntry.Text = string.Empty;
-            _loading.IsRunning = false;
-            _displayMovieButton.IsEnabled = true;
+                if(this._movies.MovieList.Count == 0)
+                {
+                    await DisplayAlert("No movies", "There are no movies that contain these words in their title, try again", "OK");
+                } 
+                else
+                {
+                    await this.Navigation.PushAsync(new MovieListPage() { BindingContext = this._movies });
+                }
+                this._searchEntry.Text = string.Empty;
+                _loading.IsRunning = false;
+                _displayMovieButton.IsEnabled = true;
+            }
         }
     }
 }
