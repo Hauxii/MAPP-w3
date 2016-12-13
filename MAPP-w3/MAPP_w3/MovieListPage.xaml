@@ -4,11 +4,12 @@
              x:Class="MAPP_w3.MovieListPage"
              Title="Movie list">
   <ListView x:Name="listview"
-            ItemsSource="{Binding MovieList}">
+            ItemsSource="{Binding MovieList}"
+            HasUnevenRows="True">
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
-          <Grid Padding="0,5">
+          <Grid Padding="10,5">
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
