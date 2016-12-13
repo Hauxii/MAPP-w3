@@ -38,6 +38,9 @@
     <Compile Include="App.cs" />
     <Compile Include="DBSettings.cs" />
     <Compile Include="Model\Movie.cs" />
+    <Compile Include="MovieDetailsPage.xaml.cs">
+      <DependentUpon>MovieDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MovieInputPage.cs" />
     <Compile Include="Model\Movies.cs" />
     <Compile Include="MovieListPage.xaml.cs">
@@ -73,6 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MovieListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MovieDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

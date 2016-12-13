@@ -5,7 +5,8 @@
              Title="Movie list">
   <ListView x:Name="listview"
             ItemsSource="{Binding MovieList}"
-            HasUnevenRows="True">
+            HasUnevenRows="True"
+            ItemSelected="Listview_OnItemSelected">
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>

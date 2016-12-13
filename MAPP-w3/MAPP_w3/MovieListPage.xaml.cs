@@ -15,6 +15,15 @@ namespace MAPP_w3
             InitializeComponent();
         }
 
-        //TODO something that Hrafn did
+        private void Listview_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+            {
+                return;
+            }
+
+            this.Navigation.PushAsync(new MovieDetailsPage() { BindingContext = e.SelectedItem });
+          
+        }
     }
 }
