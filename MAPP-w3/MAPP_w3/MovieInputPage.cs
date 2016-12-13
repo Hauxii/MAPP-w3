@@ -80,6 +80,9 @@ namespace MAPP_w3
             //await this._movieResourceProvider.GetMoviesByTitle(this._movies, this._searchEntry.Text);
             //this._displayMovieLabel.Text = this._movies.MovieList[0].Title;
             this._displayMovieLabel.Text = movieInfoResponse.Results[0].Title;
+
+            await this.Navigation.PushAsync(new MovieListPage());
+
             this._searchEntry.Text = string.Empty;
         }
     }
