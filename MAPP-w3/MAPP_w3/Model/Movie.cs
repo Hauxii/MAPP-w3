@@ -18,5 +18,6 @@ namespace MAPP_w3.Model
 		public string Overview { get; set; }
 		public string Poster { get; set; }
 		public List<string> Cast { get; set; }
+        public string CastDTO { get; set; }
     }
 }
