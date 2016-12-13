@@ -15,6 +15,7 @@ namespace MAPP_w3
     {
         private Movies _movies;
         private MovieResourceProvider _movieResourceProvider;
+        private ActivityIndicator _loading;
         
         private Label _entryLabel = new Label
         {
@@ -47,6 +48,8 @@ namespace MAPP_w3
         {
             this._movies = movies;
             this._movieResourceProvider = new MovieResourceProvider();
+            this._loading = new ActivityIndicator();
+            _loading.IsVisible = false;
             this.BackgroundColor = Color.White; 
             this.Title = "Search";
             Content = new StackLayout
@@ -64,7 +67,8 @@ namespace MAPP_w3
                         }
                     },
                     this._displayMovieButton,
-                    this._displayMovieLabel
+                    this._displayMovieLabel,
+                    this._loading
                 }
             };
             this._displayMovieButton.Clicked += this.OnDisplayMovieButtonClicked;
@@ -73,13 +77,17 @@ namespace MAPP_w3
 
         private async void OnDisplayMovieButtonClicked(object sender, EventArgs e)
         {
+            _displayMovieButton.IsEnabled = false;
+            _loading.IsVisible = true;
+            _loading.IsRunning = true;
            
-
             await this._movieResourceProvider.GetMoviesByTitle(this._movies, this._searchEntry.Text);
 
             await this.Navigation.PushAsync(new MovieListPage() { BindingContext = this._movies });
 
             this._searchEntry.Text = string.Empty;
+            _loading.IsRunning = false;
+            _displayMovieButton.IsEnabled = true;
         }
     }
 }
