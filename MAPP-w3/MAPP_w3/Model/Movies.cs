@@ -30,7 +30,7 @@ namespace MAPP_w3.Model
 			this._movieList.Clear();
 		}
 
-		public  void ExtractInfo(MovieInfo movieInfo ,ApiQueryResponse<MovieCredit> response)
+		public  void ExtractInfo(MovieInfo movieInfo ,ApiQueryResponse<MovieCredit> response, ApiQueryResponse<DM.MovieApi.MovieDb.Movies.Movie> movieDetails)
 		{
 
 			List<string> cast = new List<string>();
@@ -76,6 +76,8 @@ namespace MAPP_w3.Model
 			    }
             }
 
+		    var runtime = movieDetails.Item.Runtime.ToString() + " min";
+
             nullChecker(movieInfo);
             
             Movie newMovie = new Movie()
@@ -88,7 +90,8 @@ namespace MAPP_w3.Model
 				Cast = cast,
                 CastDTO = castdto,
 				Genre = genre,
-                GenreDTO = genredto
+                GenreDTO = genredto,
+                Runtime = runtime
 			};
 
 			AddMovie(newMovie);

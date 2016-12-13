@@ -23,7 +23,6 @@ namespace MAPP_w3
 		public async Task GetMoviesByTitle(Movies movies, string title)
 		{
 			var movieInfoResponse = await _movieApi.SearchByTitleAsync(title);
-
 			await populateInfoHelper(movies, movieInfoResponse);
 
 			return;
@@ -69,13 +68,14 @@ namespace MAPP_w3
                             else
                             {
                                 ApiQueryResponse<MovieCredit> movieCreditsResponse = await _movieApi.GetCreditsAsync(m.Id);
+                                ApiQueryResponse<DM.MovieApi.MovieDb.Movies.Movie> movieDetailsResponse = await _movieApi.FindByIdAsync(m.Id);
                                 if (movieCreditsResponse == null)
                                 {
                                     //Console.WriteLine("MOVIECREDITSINFO IS NULL!!!!!!!");
                                 }
                                 else
                                 {
-                                    movies.ExtractInfo(m, movieCreditsResponse);
+                                    movies.ExtractInfo(m, movieCreditsResponse, movieDetailsResponse);
                                 }
                             }
 
