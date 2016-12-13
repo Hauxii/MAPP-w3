@@ -43,9 +43,9 @@ namespace MAPP_w3
             FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
         };
 
-        public MovieInputPage()
+        public MovieInputPage(Movies movies)
         {
-            this._movies = new Movies();
+            this._movies = movies;
             this._movieResourceProvider = new MovieResourceProvider();
             this.BackgroundColor = Color.White; 
             this.Title = "Search";
@@ -81,7 +81,7 @@ namespace MAPP_w3
             //this._displayMovieLabel.Text = this._movies.MovieList[0].Title;
             this._displayMovieLabel.Text = movieInfoResponse.Results[0].Title;
 
-            await this.Navigation.PushAsync(new MovieListPage());
+            await this.Navigation.PushAsync(new MovieListPage() { BindingContext = this._movies });
 
             this._searchEntry.Text = string.Empty;
         }

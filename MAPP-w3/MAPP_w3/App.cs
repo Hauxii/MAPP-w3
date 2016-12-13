@@ -12,7 +12,7 @@ namespace MAPP_w3
         public App()
         {
             // The root page of your application
-            var content = new MovieInputPage();
+            var content = new MovieInputPage(new Model.Movies());
 
             MainPage = new NavigationPage(content);
         }

@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MAPP_w3.MovieListPage">
-  <Label Text="MovieList Page" VerticalOptions="Center" HorizontalOptions="Center" />
+             x:Class="MAPP_w3.MovieListPage"
+             Title="Movie list">
+  <ListView x:Name="listview"
+            ItemsSource="{Binding MovieList}"/>
 </ContentPage>
