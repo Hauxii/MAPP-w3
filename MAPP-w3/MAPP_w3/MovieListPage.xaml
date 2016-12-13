@@ -26,12 +26,13 @@
             <Label Grid.Row="0" Grid.Column="1"
                    Text="{Binding Title}"
                    FontSize="Medium"
-                   TextColor="#666666" />
+                   TextColor="#666666"
+                   LineBreakMode="TailTruncation"/>
             <Label Grid.Row="0" Grid.Column="2"
                   Text="{Binding Year}"
                   FontSize="Small"
                   HorizontalTextAlignment="End"/>
-            <Label Grid.Row="1" Grid.Column="1"
+            <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                    Text="{Binding CastDTO}"
                    FontSize="Small" 
                    LineBreakMode="TailTruncation"/>

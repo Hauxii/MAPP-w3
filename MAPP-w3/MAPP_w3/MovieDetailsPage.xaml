@@ -5,23 +5,39 @@
              Title="Movie details" >
   <Grid x:Name = "DetailsGrid" Padding="5">
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="Auto" />
-      <ColumnDefinition />
+      <ColumnDefinition Width="60" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="Auto"/>
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
-      <RowDefinition Height = "*" />
-      <RowDefinition Height = "*" />
-      <RowDefinition Height = "*" />
+      <RowDefinition Height = "Auto" />
+      <RowDefinition Height = "Auto" />
+      <RowDefinition Height = "Auto" />
     </Grid.RowDefinitions>
-    <Label Grid.Row = "0"
-           Grid.Column = "0"
+    <Label Grid.Row = "0" Grid.Column = "0" Grid.ColumnSpan="2"
            Text = "{Binding Title}"
            FontSize="Large"
            Margin = "10" />
-    <Label Grid.Row = "0"
-           Grid.Column = "1"
+    <Label Grid.Row = "0" Grid.Column = "2"
            Text = "{Binding Year}"
            FontSize="Large"
-           Margin="10" />
+           Margin="10"
+           HorizontalTextAlignment="End"/>
+    <Label Grid.Row = "1" Grid.Column = "0"
+          Text = "{Binding Runtime}"
+          FontSize="Medium"
+          Margin = "10" />
+    <Label Grid.Row = "1" Grid.Column = "2"
+          Text = "{Binding GenreDTO}"
+          FontSize="Medium"
+          Margin = "10" 
+           HorizontalTextAlignment="End"/>
+    <Image Grid.Row ="2" Grid.Column="0"
+          Source="{Binding Poster}"
+          Aspect="AspectFit"/>
+    <Label Grid.Row = "2" Grid.Column = "1" Grid.ColumnSpan="2"
+          Text = "{Binding Overview}"
+          FontSize="Small"
+          Margin = "10"/>
   </Grid>
 </ContentPage>

@@ -57,18 +57,23 @@ namespace MAPP_w3.Model
                     
                 }
             }
-			
 
+		    var genredto = "";
 			foreach (var g in movieInfo.Genres)
 			{
 			    if (g != null && g.Name != null)
 			    {
                     genre.Add(g.Name);
-                }
+			        genredto += g.Name;
+			    }
                 else
                 {
                     genre.Add("");
                 }
+			    if (!g.Equals(movieInfo.Genres.Last()))
+			    {
+			        genredto += ", ";
+			    }
             }
 
             nullChecker(movieInfo);
@@ -82,7 +87,8 @@ namespace MAPP_w3.Model
 				Overview = movieInfo.Overview,
 				Cast = cast,
                 CastDTO = castdto,
-				Genre = genre
+				Genre = genre,
+                GenreDTO = genredto
 			};
 
 			AddMovie(newMovie);
