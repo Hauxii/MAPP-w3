@@ -13,19 +13,28 @@
           <Grid Padding="10,5">
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto"></RowDefinition>
-              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="40"></ColumnDefinition>
               <ColumnDefinition Width="*"></ColumnDefinition>
               <ColumnDefinition Width="40"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0"
+            <Image Grid.Row ="0" Grid.Column="0" Grid.RowSpan="2"
+                   Source="{Binding Poster}" 
+                   HorizontalOptions="Start"/>
+            <Label Grid.Row="0" Grid.Column="1"
                    Text="{Binding Title}"
                    FontSize="Medium"
                    TextColor="#666666" />
-            <Label Grid.Row="1" Grid.Column="0"
-                   Text="{Binding Year}"
-                   FontSize="Small" />
+            <Label Grid.Row="0" Grid.Column="2"
+                  Text="{Binding Year}"
+                  FontSize="Small"
+                  HorizontalTextAlignment="End"/>
+            <Label Grid.Row="1" Grid.Column="1"
+                   Text="{Binding CastDTO}"
+                   FontSize="Small" 
+                   LineBreakMode="TailTruncation"/>
           </Grid>
         </ViewCell>
       </DataTemplate>

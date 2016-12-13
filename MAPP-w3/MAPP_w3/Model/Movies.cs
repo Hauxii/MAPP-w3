@@ -35,6 +35,7 @@ namespace MAPP_w3.Model
 
 			List<string> cast = new List<string>();
 			List<string> genre = new List<string>();
+		    var castdto = "";
             
 		    if (response.Item.CastMembers != null)
 		    {
@@ -43,6 +44,11 @@ namespace MAPP_w3.Model
                     if (response.Item.CastMembers[i] != null && response.Item.CastMembers[i].Name != null)
                     {
                         cast.Add(response.Item.CastMembers[i].Name);
+                        castdto += response.Item.CastMembers[i].Name;
+                        if (i + 1 < 3 && i + 1 < response.Item.CastMembers.Count)
+                        {
+                            castdto += ", ";
+                        }
                     }
                     else
                     {
@@ -72,9 +78,10 @@ namespace MAPP_w3.Model
 				ID = movieInfo.Id,
 				Title = movieInfo.Title,
 				Year = movieInfo.ReleaseDate.Year.ToString(),
-				Poster = movieInfo.PosterPath,
+				Poster = "http://image.tmdb.org/t/p/w92" + movieInfo.PosterPath,
 				Overview = movieInfo.Overview,
 				Cast = cast,
+                CastDTO = castdto,
 				Genre = genre
 			};
 
