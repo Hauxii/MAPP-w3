@@ -37,8 +37,17 @@ namespace MAPP_w3
 			return;
 		}
 
+        public async Task GetPopular(Movies movies)
+        {
+            var movieInfoResponse = await _movieApi.GetPopularAsync();
+
+            await populateInfoHelper(movies, movieInfoResponse);
+
+            return;
+        }
+
         //We sincerely apologies for the disgusting code here below, but this was the only solution in figuring out the random nullpointer-exceptions
-		private async Task populateInfoHelper(Movies movies, ApiSearchResponse<MovieInfo> res)
+        private async Task populateInfoHelper(Movies movies, ApiSearchResponse<MovieInfo> res)
 		{
 		    if (movies == null)
 		    {
