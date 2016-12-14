@@ -42,5 +42,16 @@ namespace MAPP_w3
             LoadingSpinner.IsVisible = false;
             BindingContext = _movies;
         }
+
+        public async Task GetPopularMovies()
+        {
+            LoadingSpinner.IsRunning = true;
+            LoadingSpinner.IsVisible = true;
+
+            await this._resource.GetPopular(this._movies);
+
+            LoadingSpinner.IsVisible = false;
+            BindingContext = _movies;
+        }
     }
 }
