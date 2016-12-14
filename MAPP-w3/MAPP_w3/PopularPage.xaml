@@ -4,7 +4,7 @@
              x:Class="MAPP_w3.PopularPage"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             Title="Popular Movies">>
+             Title="Popular Movies">
   <ContentPage.Content>
 <StackLayout>
   <ActivityIndicator x:Name="PopularLoadingSpinner" 
