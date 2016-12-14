@@ -23,7 +23,8 @@ namespace MAPP_w3
             }
 
             this.Navigation.PushAsync(new MovieDetailsPage() { BindingContext = e.SelectedItem });
-          
+            ((ListView)sender).SelectedItem = null;
         }
+
     }
 }

@@ -23,7 +23,7 @@
            FontSize="Large"
            Margin="10"
            HorizontalTextAlignment="End"/>
-    <Label Grid.Row = "1" Grid.Column = "0"
+    <Label Grid.Row = "1" Grid.Column = "0" Grid.ColumnSpan="2"
           Text = "{Binding Runtime}"
           FontSize="Medium"
           Margin = "10" />
