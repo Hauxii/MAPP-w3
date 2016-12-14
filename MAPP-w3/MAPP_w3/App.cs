@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using MAPP_w3.Model;
 using Xamarin.Forms;
 
 namespace MAPP_w3
@@ -12,11 +12,11 @@ namespace MAPP_w3
         public App()
         {
             // The root page of your application
-            var moviePage = new MovieInputPage(new Model.Movies());
+            var moviePage = new MovieInputPage(new Movies());
             var movieNavigationPage = new NavigationPage(moviePage);
             movieNavigationPage.Title = "Movies";
 
-            var otherPage = new OtherPage(new Model.Movies());
+            var otherPage = new OtherPage(new Movies());
             var otherNavigationPage = new NavigationPage(otherPage);
             otherNavigationPage.Title = "Top rated";
 
@@ -28,7 +28,16 @@ namespace MAPP_w3
             tabbedPage.Children.Add(movieNavigationPage);
             tabbedPage.Children.Add(otherNavigationPage);
             tabbedPage.Children.Add(popularNavigationPage);
-                
+
+            tabbedPage.CurrentPageChanged += async (sender, e) =>
+            {
+                if (tabbedPage.CurrentPage.Equals(otherNavigationPage))
+                {
+                    await otherPage.GetTopRatedMovies();
+                }
+
+            };
+
             MainPage = new NavigationPage(tabbedPage);
         }
 

@@ -3,42 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAPP_w3.OtherPage"
              Title="Top rated movies">
-  <ListView x:Name="TopRatedListview"
-            ItemsSource="{Binding MovieList}"
-            HasUnevenRows="True"
-            ItemSelected="Listview_OnItemSelected">
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <Grid Padding="10,5">
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"></RowDefinition>
-              <RowDefinition Height="15"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="40"></ColumnDefinition>
-              <ColumnDefinition Width="*"></ColumnDefinition>
-              <ColumnDefinition Width="40"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Image Grid.Row ="0" Grid.Column="0" Grid.RowSpan="2"
-                   Source="{Binding Poster}"
-                   HorizontalOptions="Start"/>
-            <Label Grid.Row="0" Grid.Column="1"
-                   Text="{Binding Title}"
-                   FontSize="Medium"
-                   TextColor="#666666"
-                   LineBreakMode="TailTruncation"/>
-            <Label Grid.Row="0" Grid.Column="2"
-                  Text="{Binding Year}"
-                  FontSize="Small"
-                  HorizontalTextAlignment="End"/>
-            <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-                   Text="{Binding CastDTO}"
-                   FontSize="Small"
-                   LineBreakMode="TailTruncation"/>
-          </Grid>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-  </ListView>
+  <StackLayout>
+    <ActivityIndicator x:Name="LoadingSpinner"
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center"
+                       Margin="0, 20, 0, 0"/>
+    <ListView x:Name="TopRatedListview"
+              ItemsSource="{Binding MovieList}"
+              HasUnevenRows="True"
+              ItemSelected="Listview_OnItemSelected">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid Padding="10,5">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="15"></RowDefinition>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+              </Grid.ColumnDefinitions>
+              <Image Grid.Row ="0" Grid.Column="0" Grid.RowSpan="2"
+                     Source="{Binding Poster}"
+                     HorizontalOptions="Start"/>
+              <Label Grid.Row="0" Grid.Column="1"
+                     Text="{Binding Title}"
+                     FontSize="Medium"
+                     TextColor="#666666"
+                     LineBreakMode="TailTruncation"/>
+              <Label Grid.Row="0" Grid.Column="2"
+                    Text="{Binding Year}"
+                    FontSize="Small"
+                    HorizontalTextAlignment="End"/>
+              <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                     Text="{Binding CastDTO}"
+                     FontSize="Small"
+                     LineBreakMode="TailTruncation"/>
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
 </ContentPage>

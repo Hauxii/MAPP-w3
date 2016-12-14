@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,7 +20,7 @@ namespace MAPP_w3
             InitializeComponent();
             this._resource = new MovieResourceProvider();
             this._movies = movies;
-            this._loading = new ActivityIndicator();
+            //this._loading = new ActivityIndicator();
         }
 
         private void Listview_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -31,6 +32,17 @@ namespace MAPP_w3
 
             this.Navigation.PushAsync(new MovieDetailsPage() { BindingContext = e.SelectedItem });
             ((ListView)sender).SelectedItem = null;
+        }
+
+        public async Task GetTopRatedMovies()
+        {
+            LoadingSpinner.IsRunning = true;
+            LoadingSpinner.IsVisible = true;
+
+            await this._resource.GetTopRated(this._movies);
+
+            LoadingSpinner.IsVisible = false;
+            BindingContext = _movies;
         }
     }
 }
