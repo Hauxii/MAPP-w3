@@ -14,13 +14,11 @@ namespace MAPP_w3
     {
         private Movies _movies;
         private MovieResourceProvider _resource;
-        private ActivityIndicator _loading;
         public OtherPage(Movies movies)
         {
             InitializeComponent();
             this._resource = new MovieResourceProvider();
             this._movies = movies;
-            //this._loading = new ActivityIndicator();
         }
 
         private void Listview_OnItemSelected(object sender, SelectedItemChangedEventArgs e)

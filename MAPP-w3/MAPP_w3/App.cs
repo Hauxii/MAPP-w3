@@ -20,7 +20,7 @@ namespace MAPP_w3
             var otherNavigationPage = new NavigationPage(otherPage);
             otherNavigationPage.Title = "Top rated";
 
-            var popularPage = new PopularPage();
+            var popularPage = new PopularPage(new Movies());
             var popularNavigationPage = new NavigationPage(popularPage);
             popularNavigationPage.Title = "Popular";
 
@@ -34,6 +34,10 @@ namespace MAPP_w3
                 if (tabbedPage.CurrentPage.Equals(otherNavigationPage))
                 {
                     await otherPage.GetTopRatedMovies();
+                }
+                else if (tabbedPage.CurrentPage.Equals(popularNavigationPage))
+                {
+                    await popularPage.GetPopularMovies();
                 }
 
             };
