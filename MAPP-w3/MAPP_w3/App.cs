@@ -16,13 +16,18 @@ namespace MAPP_w3
             var movieNavigationPage = new NavigationPage(moviePage);
             movieNavigationPage.Title = "Movies";
 
-            var otherPage = new OtherPage();
+            var otherPage = new OtherPage(new Model.Movies());
             var otherNavigationPage = new NavigationPage(otherPage);
-            otherNavigationPage.Title = "Other";
+            otherNavigationPage.Title = "Top rated";
+
+            var popularPage = new PopularPage();
+            var popularNavigationPage = new NavigationPage(popularPage);
+            popularNavigationPage.Title = "Popular";
 
             var tabbedPage = new TabbedPage();
             tabbedPage.Children.Add(movieNavigationPage);
             tabbedPage.Children.Add(otherNavigationPage);
+            tabbedPage.Children.Add(popularNavigationPage);
                 
             MainPage = new NavigationPage(tabbedPage);
         }
