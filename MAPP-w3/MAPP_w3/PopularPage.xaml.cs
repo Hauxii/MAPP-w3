@@ -19,18 +19,18 @@ namespace MAPP_w3
             InitializeComponent();
             this._resource = new MovieResourceProvider();
             this._movies = movies;
-        }
-
-        private void Listview_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem == null)
+            PopularFlowListView.FlowItemTapped += (sender, e) =>
             {
-                return;
-            }
+                if (e.Item == null)
+                {
+                    return;
+                }
 
-            this.Navigation.PushAsync(new MovieDetailsPage() { BindingContext = e.SelectedItem });
-            ((ListView)sender).SelectedItem = null;
+                this.Navigation.PushAsync(new MovieDetailsPage() { BindingContext = e.Item });
+                ((ListView)sender).SelectedItem = null;
+            };
         }
+
 
         public async Task GetPopularMovies()
         {

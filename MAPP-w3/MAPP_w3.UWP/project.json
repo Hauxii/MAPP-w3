@@ -1,8 +1,10 @@
 ﻿{
   "dependencies": {
+    "DLToolkit.Forms.Controls.FlowListView": "2.0.2",
     "Microsoft.Net.Http": "2.2.29",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "TheMovieDbWrapper": "0.8.1",
+    "Xamarin.FFImageLoading.Forms": "2.2.5",
     "Xamarin.Forms": "2.3.3.175"
   },
   "frameworks": {

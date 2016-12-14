@@ -1,50 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="MAPP_w3.PopularPage"
-             Title="Popular movies">
-  <StackLayout>
-    <ActivityIndicator x:Name="PopularLoadingSpinner"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       Margin="0, 20, 0, 0"/>
-    <ListView x:Name="PopularListview"
-              ItemsSource="{Binding MovieList}"
-              HasUnevenRows="True"
-              ItemSelected="Listview_OnItemSelected">
-      <ListView.ItemTemplate>
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+  <ContentPage.Content>
+<StackLayout>
+  <ActivityIndicator x:Name="PopularLoadingSpinner" 
+                     Margin="0, 20, 0, 0"/>
+    <flv:FlowListView SeparatorVisibility="None" 
+                      HasUnevenRows="true"
+                      FlowItemTappedCommand="{Binding FlowItemTappedCommand}" 
+                      FlowLastTappedItem="{Binding LastTappedItem}"
+                      FlowColumnMinWidth="110"
+                      FlowItemsSource="{Binding MovieList}"
+                      x:Name="PopularFlowListView">
+      <flv:FlowListView.FlowColumnTemplate>
         <DataTemplate>
-          <ViewCell>
-            <Grid Padding="10,5">
-              <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="15"></RowDefinition>
-              </Grid.RowDefinitions>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="40"></ColumnDefinition>
-              </Grid.ColumnDefinitions>
-              <Image Grid.Row ="0" Grid.Column="0" Grid.RowSpan="2"
-                     Source="{Binding Poster}"
-                     HorizontalOptions="Start"/>
-              <Label Grid.Row="0" Grid.Column="1"
-                     Text="{Binding Title}"
-                     FontSize="Medium"
-                     TextColor="#666666"
-                     LineBreakMode="TailTruncation"/>
-              <Label Grid.Row="0" Grid.Column="2"
-                    Text="{Binding Year}"
-                    FontSize="Small"
-                    HorizontalTextAlignment="End"/>
-              <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-                     Text="{Binding CastDTO}"
-                     FontSize="Small"
-                     LineBreakMode="TailTruncation"/>
-            </Grid>
-          </ViewCell>
+          <Grid Padding="3">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ffimageloading:CachedImage HeightRequest="180" 
+                                        Aspect="AspectFill"
+                                        DownsampleHeight="100" 
+                                        DownsampleUseDipUnits="false"
+                                        LoadingPlaceholder="image_loading.png"
+                                        ErrorPlaceholder="image_error.png"
+                                        Source="{Binding Poster}"/>
+
+            <Label x:Name="Label"
+                   HorizontalOptions="Fill" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalOptions="End"
+                   BackgroundColor="Silver" 
+                   Opacity="0.5" 
+                   Text="{Binding Title}"/>
+          </Grid>
         </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
-  </StackLayout>
+      </flv:FlowListView.FlowColumnTemplate>
+
+    </flv:FlowListView>
+</StackLayout>
+  </ContentPage.Content>
 </ContentPage>
