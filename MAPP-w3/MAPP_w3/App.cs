@@ -12,9 +12,19 @@ namespace MAPP_w3
         public App()
         {
             // The root page of your application
-            var content = new MovieInputPage(new Model.Movies());
+            var moviePage = new MovieInputPage(new Model.Movies());
+            var movieNavigationPage = new NavigationPage(moviePage);
+            movieNavigationPage.Title = "Movies";
 
-            MainPage = new NavigationPage(content);
+            var otherPage = new OtherPage();
+            var otherNavigationPage = new NavigationPage(otherPage);
+            otherNavigationPage.Title = "Other";
+
+            var tabbedPage = new TabbedPage();
+            tabbedPage.Children.Add(movieNavigationPage);
+            tabbedPage.Children.Add(otherNavigationPage);
+
+            MainPage = new NavigationPage(tabbedPage);
         }
 
         protected override void OnStart()
