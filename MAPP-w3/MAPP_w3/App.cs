@@ -23,7 +23,7 @@ namespace MAPP_w3
             var tabbedPage = new TabbedPage();
             tabbedPage.Children.Add(movieNavigationPage);
             tabbedPage.Children.Add(otherNavigationPage);
-
+                
             MainPage = new NavigationPage(tabbedPage);
         }
 
